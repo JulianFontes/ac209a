@@ -51,15 +51,21 @@ To analyze one measure: `df[df["MeasureId"] == "MHLTH"]`.
 
 Output: `data/processed/tract_health_food_access_2019.csv` (49 states + DC).
 
-## Remaining missing values (kept as-is)
+## Missing values in the output (kept as-is)
 
-Counts below are per tract; in the output each count appears twice, once per measure row.
+Columns with missing values in `tract_health_food_access_2019.csv` (140,666 rows). All other columns have none.
+Food Access values repeat on both measure rows, so their counts are 2× the number of tracts affected.
 
-| Column | Missing | Why |
-|---|---|---|
-| `lahunv1share`, `lapop1share` | ~19,000 | Blank in the raw file; appears to mean below USDA's low-access cutoff |
-| `LAPOP1_10` | 28,954 | Same |
-| `lapop10share`, `lahunv10share` | ~62,500 | Same (most tracts have nobody beyond 10 miles) |
-| `lapophalfshare`, `lahunvhalfshare` | ~4,300 | Same |
-| `MedianFamilyIncome` | 542 | Not reported by ACS |
-| `TractSeniors`, `TractHUNV`, `TractSNAP` | 1 | Not reported |
+| Column | NaNs | % of rows | Why |
+|---|---|---|---|
+| `LAPOP1_10` | 57,908 | 41.2% | Blank in the raw file; appears to mean below USDA's low-access cutoff |
+| `lapophalfshare` | 8,592 | 6.1% | Same |
+| `lapop1share` | 38,342 | 27.3% | Same |
+| `lapop10share` | 125,210 | 89.0% | Same (most tracts have nobody beyond 10 miles) |
+| `lahunvhalfshare` | 8,586 | 6.1% | Same |
+| `lahunv1share` | 38,308 | 27.2% | Same |
+| `lahunv10share` | 125,036 | 88.9% | Same (most tracts have nobody beyond 10 miles) |
+| `MedianFamilyIncome` | 1,084 | 0.8% | Not reported by ACS |
+| `TractSeniors` | 2 | <0.1% | Not reported |
+| `TractHUNV` | 2 | <0.1% | Not reported |
+| `TractSNAP` | 2 | <0.1% | Not reported |
