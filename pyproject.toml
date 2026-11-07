@@ -6,6 +6,8 @@ dependencies = [
     "pandas",
     "openpyxl",
     "pyyaml",
+    "matplotlib>=3.11.2",
+    "seaborn>=0.13.2",
 ]
 
 [build-system]
@@ -19,6 +21,7 @@ packages = ["src/ac209a"]
 dev = [
     "bokeh",
     "ipykernel",
+    "ipympl>=0.10.0",
     "nbformat",
     "plotly",
 ]
