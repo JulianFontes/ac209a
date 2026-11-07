@@ -1,0 +1,45 @@
+# Columns + values kept by src/ac209a/build_dataset.py
+
+places:
+  # Health measures (MeasureId) to keep. PLACES 2021 release, 2019 BRFSS data.
+  measures:
+    - MHLTH        # Frequent mental distress: % of adults 18+ reporting 14+ days of poor mental health in the past 30 days
+    - DEPRESSION   # Depression: % of adults 18+ ever told by a health professional they have a depressive disorder
+
+  # Columns to keep
+  columns:
+    - LocationName           # 11-digit census tract ID (2010 tracts); renamed to GEOID
+    - StateAbbr              # 2-letter state abbreviation
+    - Geolocation            # Tract centroid as "POINT (lon lat)"
+    - MeasureId              # Health measure code (e.g. MHLTH, DEPRESSION)
+    - Year                   # BRFSS survey year the estimate is based on
+    - Data_Value             # Estimated prevalence of the measure (crude, not age-adjusted)
+    - Data_Value_Unit        # Unit of Data_Value ("%")
+    - Low_Confidence_Limit   # Lower bound of the 95% confidence interval for Data_Value
+    - High_Confidence_Limit  # Upper bound of the 95% confidence interval for Data_Value
+
+food_access:
+  # Columns to keep. USDA Food Access Research Atlas 2019: 2019 store locations, 2010 Census
+  # population, ACS 2014-18 income/vehicles. Distances are straight-line to the nearest
+  # supermarket, supercenter or large grocery store.
+  columns:
+    - CensusTract         # 11-digit census tract ID (2010 tracts); renamed to GEOID
+    - State               # State name
+    - County              # County name
+    - Urban               # 1 = urban tract (centroid in an area of 2,500+ people), 0 = rural
+    - LA1and10            # Low-access flag: 1 if 500+ people or 33%+ of residents live beyond 1 mi (urban) / 10 mi (rural)
+    - LILATracts_1And10   # Food desert flag: 1 if the tract is both low income and low access (1 mi urban / 10 mi rural)
+    - LAPOP1_10           # Number of people beyond 1 mi (urban) / 10 mi (rural)
+    - lapophalfshare      # % of tract population beyond 1/2 mi
+    - lapop1share         # % of tract population beyond 1 mi
+    - lapop10share        # % of tract population beyond 10 mi
+    - lahunvhalfshare     # % of tract housing units with no vehicle AND beyond 1/2 mi
+    - lahunv1share        # % of tract housing units with no vehicle AND beyond 1 mi
+    - lahunv10share       # % of tract housing units with no vehicle AND beyond 10 mi
+    - Pop2010             # Total tract population (2010 Census)
+    - OHU2010             # Occupied housing units (2010 Census)
+    - PovertyRate         # % of residents below the federal poverty line (ACS 2014-18)
+    - MedianFamilyIncome  # Median family income in dollars (ACS 2014-18)
+    - TractSeniors        # Number of residents aged 65+
+    - TractHUNV           # Number of housing units with no vehicle (ACS 2014-18)
+    - TractSNAP           # Number of housing units receiving SNAP benefits (ACS 2014-18)
